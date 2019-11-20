@@ -8,9 +8,39 @@
     <title>Meal Planner</title>
 </head>
 <body>
-    Test
-    <table id="all recipes">
+    
+    <h3>All Recipes</h3>
+    <button id="new-recipe-button">Add New Recipe</button>
+    <br>
 
+        <form class="add-recipe-form">
+            <input type="text" name="name" value="" placeholder="Enter Recipe Name" class="input-text">
+            <br>
+            <input type="text" name="link" value="" placeholder="Enter Recipe URL" class="input-text">
+            <br>
+            <select name="meal-type">
+                <option value="breakfast">Breakfast</option>
+                <option value="entree">Entree</option>
+            </select>
+            <select name="cuisine">
+                <option value="american">American</option>
+                <option value="mexican">Mexican</option>
+            </select>
+            <br>
+            <input type="submit" name="submit" value="Create New Recipe" class="submit">
+        </form>
+
+    <table >
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Meal Type</th>
+                <th>Cuisine</th>
+            </tr>
+        </thead>
+        <tbody id="all-recipes">
+
+        </tbody>
     </table>
 </body>
 </html>
