@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_11_19_020401) do
     t.string "name"
     t.string "url"
     t.string "meal_type"
+    t.string "cuisine"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -4,6 +4,7 @@ class CreateRecipes < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :url
       t.string :meal_type
+      t.string :cuisine
 
       t.timestamps
     end
