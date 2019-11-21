@@ -35,12 +35,28 @@ document.addEventListener("DOMContentLoaded", () => {
         <td><a href="${recipe.url}">${recipe.name}</a></td>
         <td>${recipe.meal_type}</td>
         <td>${recipe.cuisine}</td>
-    `
+        <td><button id="delete-recipe-${recipe.id}" data-recipe-id="${recipe.id}">Delete Recipe</button></td>
+        `
         allRecipesTable.appendChild(tableRow);
+
+        let deleteBtn = document.getElementById(`delete-recipe-${recipe.id}`);
+        deleteBtn.addEventListener("click", (e) => {
+            let delObj = {
+                method: "DELETE"
+            }
+
+            fetch(`${RECIPES_URL}/${e.target.dataset.recipeId}`, delObj)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (json) {
+                    e.target.parentNode.parentNode.remove()
+                })
+        })
 
     }
 
-    recipeForm.addEventListener('submit', function (event) {
+    recipeForm.addEventListener('submit', (event) => {
         event.preventDefault();
         let recipeName = event.target.name.value;
         let recipeUrl = event.target.url.value;
@@ -65,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return fetch(RECIPES_URL, configObj) 
             .then(resp => resp.json())
-            .then(json => renderRecipe(json))
+            .then(recipe => renderRecipe(recipe))
         
     })
 
