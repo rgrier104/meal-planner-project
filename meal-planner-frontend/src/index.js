@@ -1,6 +1,7 @@
 
 let RECIPES_URL = "http://127.0.0.1:3000/recipes";
 let addRecipe = false;
+let recipeForm = document.getElementById("new-recipe-container");
 
 class Recipe {
 
@@ -48,9 +49,9 @@ class Recipe {
 
     }
 
-    displayNewRecipeForm() {
+    static displayNewRecipeForm() {
         let newRecipeBtn = document.getElementById("new-recipe-button");
-        let recipeForm = document.getElementById("new-recipe-container")
+        
 
         newRecipeBtn.addEventListener("click", () => {
             addRecipe = !addRecipe
@@ -62,7 +63,7 @@ class Recipe {
         })
     }
 
-    createRecipe() {
+    static createRecipe() {
         recipeForm.addEventListener('submit', (event) => {
             event.preventDefault();
             let recipeName = event.target.name.value;
@@ -88,7 +89,10 @@ class Recipe {
 
             return fetch(RECIPES_URL, configObj)
                 .then(resp => resp.json())
-                .then(recipe => renderRecipe(recipe))
+                .then(recipe => {
+                    let newRecipe = new Recipe(recipe.name, recipe.url, recipe.meal_type, recipe.cuisine)
+                    newRecipe.renderRecipe()
+                })
             
         })
     }
@@ -96,3 +100,5 @@ class Recipe {
 }
 
 Recipe.fetchRecipes();
+Recipe.displayNewRecipeForm();
+Recipe.createRecipe();
