@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
     Recipe.fetchRecipes();
     // Display new recipe form
     Recipe.displayNewRecipeForm();
+    displayMealPlan();
+    renderCalendar();
 })
+
 
 
 
