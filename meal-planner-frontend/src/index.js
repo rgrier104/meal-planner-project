@@ -5,18 +5,19 @@ let recipeForm = document.getElementById("new-recipe-container");
 
 class Recipe {
 
-    constructor(name, url, meal_type, cuisine) {
+    constructor(name, url, meal_type, cuisine, id) {
         this.name = name;
         this.url = url;
         this.meal_type = meal_type;
         this.cuisine = cuisine;  
+        this.id = id;
     }
 
     static fetchRecipes() {
         fetch(RECIPES_URL)
             .then(resp => resp.json())
             .then(json => json.forEach(recipe => {
-                let newRecipe = new Recipe(recipe.name, recipe.url, recipe.meal_type, recipe.cuisine)
+                let newRecipe = new Recipe(recipe.name, recipe.url, recipe.meal_type, recipe.cuisine, recipe.id)
                 newRecipe.renderRecipe()
             }))
     }
