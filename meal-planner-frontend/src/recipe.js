@@ -1,4 +1,5 @@
 let RECIPES_URL = "http://127.0.0.1:3000/recipes";
+let allRecipes = [];
 
 class Recipe {
 
@@ -14,8 +15,9 @@ class Recipe {
         fetch(RECIPES_URL)
             .then(resp => resp.json())
             .then(json => json.forEach(recipe => {
-                let newRecipe = new Recipe(recipe.name, recipe.url, recipe.meal_type, recipe.cuisine, recipe.id)
-                newRecipe.renderRecipe()
+                let newRecipe = new Recipe(recipe.name, recipe.url, recipe.meal_type, recipe.cuisine, recipe.id);
+                allRecipes.push(newRecipe);
+                newRecipe.renderRecipe();
             }))
     }
 
