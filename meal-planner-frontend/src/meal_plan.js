@@ -36,12 +36,12 @@ function renderCalendar() {
         const dayContainer = document.createElement("div");
         dayContainer.className = "day-card"
         dayContainer.innerHTML = `
-            <h5>${daysOfWeek[i]}</h5>
-            <h3>Breakfast</h3>
-            <h3>Lunch</h3>
-            <h3>Dinner</h3>
-            <h3>Snack</h3>
-            <h3>Other</h3>
+            <div>${daysOfWeek[i]}</div>
+            <div id = "$daysOfWeek[i]-breakfast>Breakfast: </div>
+            <div>Lunch</div>
+            <div>Dinner</div>
+            <div>Snack</div>
+            <div>Other</div>
         `
         mealPlanContainer.appendChild(dayContainer);
     }
