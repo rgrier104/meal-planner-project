@@ -19,6 +19,20 @@ class MealPlan {
         })
     }
 
+    static renderCalendar() {
+        const mealPlanContainer = document.getElementById("meal-plan-week");
+        const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday","Friday", "Saturday"]
+        for (let i = 0; i < 7; i++) {
+            const dayContainer = document.createElement("div");
+            dayContainer.innerHTML = `
+            <h5>${daysOfWeek[i]}</h5>
+        `
+            mealPlanContainer.appendChild(dayContainer);
+        }
+        
+    }
+
 }
 
 MealPlan.displayMealPlan();
+MealPlan.renderCalendar();
