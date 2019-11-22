@@ -8,8 +8,11 @@
     <title>Meal Planner</title>
 </head>
 <body>
-
-    <button id="new-meal-plan">Create New Meal Plan</button>
+    <h1>Meal Planner</h1>
+    <form>
+        Meal Plan Name: <input type="text" name="name">
+        <input type="submit" id="new-meal-plan" value="Create Meal Plan">
+    </form>
 
     <div id="meal-plan-week" style="display: none">
         
@@ -52,11 +55,10 @@
 
         </tbody>
     </table>
+
+    <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
+    <script type="application/javascript" src="src/recipe.js" charset="UTF-8"></script>
+    <script type="application/javascript" src="src/meal_plan.js" charset="UTF-8"></script>
+
 </body>
-
-<script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
-<script type="application/javascript" src="src/recipe.js" charset="UTF-8"></script>
-<script type="application/javascript" src="src/meal_plan.js" charset="UTF-8"></script>
-
-
 </html>

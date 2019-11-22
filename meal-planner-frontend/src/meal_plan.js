@@ -8,8 +8,10 @@ class MealPlan {
         let addMealPlan = false;
         const mealPlanBtn = document.getElementById("new-meal-plan");
         const mealPlanContainer = document.getElementById("meal-plan-week");
-        mealPlanBtn.addEventListener("click", () => {
+        mealPlanBtn.addEventListener("submit", (e) => {
+            e.preventDefault();
             let newMealPlan = new MealPlan();
+            newMealPlan.name = e.target.name.value
             addMealPlan = !addMealPlan
             if (addMealPlan) {
                 mealPlanContainer.style.display = 'block'
@@ -24,6 +26,7 @@ class MealPlan {
         const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday","Friday", "Saturday"]
         for (let i = 0; i < 7; i++) {
             const dayContainer = document.createElement("div");
+            dayContainer.className = "day-card"
             dayContainer.innerHTML = `
             <h5>${daysOfWeek[i]}</h5>
         `
