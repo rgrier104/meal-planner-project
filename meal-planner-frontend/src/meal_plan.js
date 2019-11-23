@@ -37,13 +37,41 @@ function renderCalendar() {
         dayContainer.className = "day-card"
         dayContainer.innerHTML = `
             <div>${daysOfWeek[i]}</div>
-            <div id = "$daysOfWeek[i]-breakfast>Breakfast: </div>
-            <div>Lunch</div>
-            <div>Dinner</div>
-            <div>Snack</div>
-            <div>Other</div>
         `
+        const breakfastBtn = document.createElement("div");
+        breakfastBtn.className = `${daysOfWeek[i]}-breakfast`;
+        breakfastBtn.innerText = `Breakfast`;
+
+        const modalDiv = document.createElement("div");
+        modalDiv.className = `modal`;
+
+        const modalContent = document.createElement("div");
+        modalContent.className = `modal-content`;
+
+        const closeBtn = document.createElement("span");
+        closeBtn.className = "closeBtn";
+        closeBtn.innerHTML = `&times;`;
+
+        const p = document.createElement("p");
+        p.innerText = `Select Breakfast`;
+
+        modalContent.appendChild(closeBtn);
+        modalContent.appendChild(p);
+        modalDiv.appendChild(modalContent);
+        breakfastBtn.appendChild(modalDiv);
+
+        breakfastBtn.appendChild(modalDiv);
         mealPlanContainer.appendChild(dayContainer);
+        dayContainer.appendChild(breakfastBtn);
+
+        breakfastBtn.addEventListener("click", () => {
+            modalDiv.style.display = "block";
+        });
+
+        closeBtn.addEventListener("click", () => {
+            console.log("close");
+            modalDiv.style.display = "none";
+        });
     }
 
 }
