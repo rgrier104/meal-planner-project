@@ -42,13 +42,13 @@ function renderCalendar() {
         breakfastBtn.className = `${daysOfWeek[i]}-breakfast`;
         breakfastBtn.innerText = `Breakfast`;
 
-        renderModalForm(breakfastBtn, dayContainer);
+        renderModal(breakfastBtn, dayContainer);
         
     }
 
 }
 
-function renderModalForm(btn, dayContainer) {
+function renderModal(btn, dayContainer) {
     const modalDiv = document.createElement("div");
     modalDiv.className = `modal`;
 
@@ -78,4 +78,6 @@ function renderModalForm(btn, dayContainer) {
         console.log("close");
         modalDiv.style.display = "none";
     });
+
+    renderMealForm(modalContent);
 }
