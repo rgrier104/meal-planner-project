@@ -3,11 +3,6 @@ class MealPlan {
         this.name = name;
         this.notes = notes;
     }
-
-    
-
-    
-
 }
 
 function displayMealPlan() {
@@ -29,8 +24,10 @@ function displayMealPlan() {
     })
 }
 
+const mealPlanContainer = document.getElementById("meal-plan-week");
+
 function renderCalendar() {
-    const mealPlanContainer = document.getElementById("meal-plan-week");
+    
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     for (let i = 0; i < 7; i++) {
         const dayContainer = document.createElement("div");
@@ -38,40 +35,47 @@ function renderCalendar() {
         dayContainer.innerHTML = `
             <div>${daysOfWeek[i]}</div>
         `
+
+        mealPlanContainer.appendChild(dayContainer);
+
         const breakfastBtn = document.createElement("div");
         breakfastBtn.className = `${daysOfWeek[i]}-breakfast`;
         breakfastBtn.innerText = `Breakfast`;
 
-        const modalDiv = document.createElement("div");
-        modalDiv.className = `modal`;
-
-        const modalContent = document.createElement("div");
-        modalContent.className = `modal-content`;
-
-        const closeBtn = document.createElement("span");
-        closeBtn.className = "closeBtn";
-        closeBtn.innerHTML = `&times;`;
-
-        const p = document.createElement("p");
-        p.innerText = `Select Breakfast`;
-
-        modalContent.appendChild(closeBtn);
-        modalContent.appendChild(p);
-        modalDiv.appendChild(modalContent);
-        breakfastBtn.appendChild(modalDiv);
-
-        breakfastBtn.appendChild(modalDiv);
-        mealPlanContainer.appendChild(dayContainer);
-        dayContainer.appendChild(breakfastBtn);
-
-        breakfastBtn.addEventListener("click", () => {
-            modalDiv.style.display = "block";
-        });
-
-        closeBtn.addEventListener("click", () => {
-            console.log("close");
-            modalDiv.style.display = "none";
-        });
+        renderModalForm(breakfastBtn, dayContainer);
+        
     }
 
+}
+
+function renderModalForm(btn, dayContainer) {
+    const modalDiv = document.createElement("div");
+    modalDiv.className = `modal`;
+
+    const modalContent = document.createElement("div");
+    modalContent.className = `modal-content`;
+
+    const closeBtn = document.createElement("span");
+    closeBtn.className = "closeBtn";
+    closeBtn.innerHTML = `&times;`;
+
+    const p = document.createElement("p");
+    p.innerText = `Select Breakfast`;
+
+    modalContent.appendChild(closeBtn);
+    modalContent.appendChild(p);
+    modalDiv.appendChild(modalContent);
+    btn.appendChild(modalDiv);
+
+    dayContainer.appendChild(modalDiv);
+    dayContainer.appendChild(btn);
+
+    btn.addEventListener("click", () => {
+        modalDiv.style.display = "block";
+    });
+
+    closeBtn.addEventListener("click", () => {
+        console.log("close");
+        modalDiv.style.display = "none";
+    });
 }
