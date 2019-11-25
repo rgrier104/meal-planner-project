@@ -17,7 +17,7 @@ function renderMealForm(modalContent) {
         let optn = document.createElement("option");
         optn.text = recipe.name;
         optn.value = recipe.id;
-        mealFormSelect.add(optn);
+
+        mealFormSelect.appendChild(optn);
     })
 }
-

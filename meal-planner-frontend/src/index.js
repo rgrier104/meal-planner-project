@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Display new recipe form
     Recipe.displayNewRecipeForm();
     displayMealPlan();
-    renderCalendar();
+
 })
 
 

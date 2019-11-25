@@ -15,6 +15,9 @@ function displayMealPlan() {
 
         let newMealPlan = new MealPlan();
         newMealPlan.name = e.target.name.value
+
+        renderCalendar();
+
         addMealPlan = !addMealPlan
         if (addMealPlan) {
             mealPlanContainer.style.display = 'block'
@@ -72,12 +75,27 @@ function renderModal(btn, dayContainer) {
 
     btn.addEventListener("click", () => {
         modalDiv.style.display = "block";
+        renderMealForm(modalContent);
     });
 
     closeBtn.addEventListener("click", () => {
-        console.log("close");
         modalDiv.style.display = "none";
     });
 
-    renderMealForm(modalContent);
+}
+
+function renderMealForm(modalContent) {
+    const mealForm = document.createElement("form");
+    const mealFormSelect = document.createElement("select");
+    modalContent.appendChild(mealForm);
+    mealForm.appendChild(mealFormSelect);
+
+        allRecipes.forEach(recipe => {
+            let optn = document.createElement("option");
+            optn.text = recipe.name;
+            optn.value = recipe.id;
+
+            mealFormSelect.appendChild(optn);
+        })
+    
 }
