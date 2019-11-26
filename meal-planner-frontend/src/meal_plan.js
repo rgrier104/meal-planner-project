@@ -63,10 +63,24 @@ function renderCalendar(mealPlan) {
         breakfastBtn.className = `${daysOfWeek[i]}-Breakfast`;
         breakfastBtn.innerText = `Breakfast`;
 
+        const lunchBtn = document.createElement("div");
+        lunchBtn.className = `${daysOfWeek[i]}-Lunch`;
+        lunchBtn.innerText = `Lunch`;
+
+        const dinnerBtn = document.createElement("div");
+        dinnerBtn.className = `${daysOfWeek[i]}-Dinner`;
+        dinnerBtn.innerText = `Dinner`;
+
+        const snackBtn = document.createElement("div");
+        snackBtn.className = `${daysOfWeek[i]}-Snack`;
+        snackBtn.innerText = `Snack`;
+
         renderModal(breakfastBtn, dayContainer, mealPlan, daysOfWeek[i], "Breakfast");
+        renderModal(lunchBtn, dayContainer, mealPlan, daysOfWeek[i], "Lunch");
+        renderModal(dinnerBtn, dayContainer, mealPlan, daysOfWeek[i], "Dinner");
+        renderModal(snackBtn, dayContainer, mealPlan, daysOfWeek[i], "Snack");
         
     }
-
 }
 
 function renderModal(btn, dayContainer, mealPlan, day, meal_type) {
