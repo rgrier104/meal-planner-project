@@ -92,8 +92,11 @@ function renderModal(btn, dayContainer, mealPlan, day, meal_type) {
     dayContainer.appendChild(btn);
 
     btn.addEventListener("click", () => {
-        modalDiv.style.display = "block";
-        renderMealForm(modalContent, mealPlan, day, meal_type);
+        
+        if (!document.querySelector(`.${day}-${meal_type}-form`)) {
+            modalDiv.style.display = "block";
+            renderMealForm(modalContent, mealPlan, day, meal_type);
+        }
     });
 
     closeBtn.addEventListener("click", () => {
