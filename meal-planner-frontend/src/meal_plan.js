@@ -1,7 +1,10 @@
+let MEALPLANS_URL = "http://127.0.0.1:3000/meal_plans";
+
 class MealPlan {
-    constructor(name, notes) {
+    constructor(name, notes, id) {
         this.name = name;
         this.notes = notes;
+        this.id = id;
     }
 }
 
@@ -10,11 +13,9 @@ function displayMealPlan() {
     const mealPlanForm = document.getElementById("new-meal-plan");
     const mealPlanContainer = document.getElementById("meal-plan-week");
     mealPlanForm.addEventListener("submit", (e) => {
-        console.log("test")
         e.preventDefault();
 
-        let newMealPlan = new MealPlan();
-        newMealPlan.name = e.target.name.value
+        createMealPlan(e);
 
         renderCalendar();
 
@@ -25,6 +26,28 @@ function displayMealPlan() {
             mealPlanContainer.style.display = 'none'
         }
     })
+}
+
+function createMealPlan(event) {
+    let formData = {
+        name: event.target.name.value,
+    };
+
+    let configObj = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+    };
+
+    return fetch(MEALPLANS_URL, configObj)
+        .then(resp => resp.json())
+        .then(meal_plan => {
+            let newMealPlan = new MealPlan(meal_plan.name, meal_plan.notes, meal_plan.id)
+            console.log(newMealPlan)
+        })
 }
 
 const mealPlanContainer = document.getElementById("meal-plan-week");
