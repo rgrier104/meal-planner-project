@@ -54,25 +54,29 @@ function renderCalendar(mealPlan) {
         const dayContainer = document.createElement("div");
         dayContainer.className = `day-card`
         dayContainer.innerHTML = `
-            <div>${daysOfWeek[i]}</div>
+            <div class="calendar-day">${daysOfWeek[i]}</div>
         `
 
         mealPlanContainer.appendChild(dayContainer);
 
         const breakfastBtn = document.createElement("div");
-        breakfastBtn.className = `${daysOfWeek[i]}-Breakfast`;
+        breakfastBtn.className = `meal-type-calendar`;
+        breakfastBtn.setAttribute("id", `${daysOfWeek[i]}-Breakfast`)
         breakfastBtn.innerText = `Breakfast`;
 
         const lunchBtn = document.createElement("div");
-        lunchBtn.className = `${daysOfWeek[i]}-Lunch`;
+        lunchBtn.className = `meal-type-calendar`;
+        lunchBtn.setAttribute("id", `${daysOfWeek[i]}-Lunch`)
         lunchBtn.innerText = `Lunch`;
 
         const dinnerBtn = document.createElement("div");
-        dinnerBtn.className = `${daysOfWeek[i]}-Dinner`;
+        dinnerBtn.className = `meal-type-calendar`;
+        dinnerBtn.setAttribute("id", `${daysOfWeek[i]}-Dinner`)
         dinnerBtn.innerText = `Dinner`;
 
         const snackBtn = document.createElement("div");
-        snackBtn.className = `${daysOfWeek[i]}-Snack`;
+        snackBtn.className = `meal-type-calendar`;
+        snackBtn.setAttribute("id", `${daysOfWeek[i]}-Snack`)
         snackBtn.innerText = `Snack`;
 
         renderModal(breakfastBtn, dayContainer, mealPlan, daysOfWeek[i], "Breakfast");
@@ -106,8 +110,8 @@ function renderModal(btn, dayContainer, mealPlan, day, meal_type) {
     dayContainer.appendChild(btn);
 
     btn.addEventListener("click", () => {
-        
-        if (!document.querySelector(`.${day}-${meal_type}-form`)) {
+
+        if (!document.querySelector(`#${day}-${meal_type}-form`)) {
             modalDiv.style.display = "block";
             renderMealForm(modalContent, mealPlan, day, meal_type);
         }

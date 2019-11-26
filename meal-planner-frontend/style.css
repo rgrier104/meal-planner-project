@@ -8,6 +8,11 @@
 
 }
 
+.calendar-day {
+    font-size: .75em;
+    float: right;
+}
+
 .modal {
     display: none;
     position: fixed;

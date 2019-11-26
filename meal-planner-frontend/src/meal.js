@@ -11,7 +11,7 @@ class Meal {
 
 function renderMealForm(modalContent, mealPlan, day, meal_type) {
     const mealForm = document.createElement("form");
-    mealForm.className = `${day}-${meal_type}-form`
+    mealForm.setAttribute("id", `${day}-${meal_type}-form`) 
     const mealFormSelect = document.createElement("select");
     mealFormSelect.name = "recipeName"
     const saveMeal = document.createElement("input");
@@ -58,7 +58,7 @@ function renderMealForm(modalContent, mealPlan, day, meal_type) {
                 let selectedRecipeObject = allRecipes.find(recipe => recipe.id === meal.recipe_id)
                 let selectedRecipeDiv = document.createElement("div")
 
-                let mealDiv = document.querySelector(`.${day}-${meal_type}`)
+                let mealDiv = document.querySelector(`#${day}-${meal_type}`)
                 selectedRecipeDiv.innerHTML = `<a href="${selectedRecipeObject.url}" target="_blank">${selectedRecipeObject.name}</a>`
                 mealDiv.append(selectedRecipeDiv);
             })
