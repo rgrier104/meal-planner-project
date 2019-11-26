@@ -52,6 +52,14 @@ function renderMealForm(modalContent, mealPlan, day, meal_type) {
             .then(meal => {
                 let newMeal = new Meal(meal.meal_plan_id, meal.recipe_id, meal.day, meal.meal_type)
                 console.log(newMeal)
+                modalContent.parentNode.style.display = "none";
+
+                let selectedRecipeObject = allRecipes.find(recipe => recipe.id === meal.recipe_id)
+                let selectedRecipeDiv = document.createElement("div")
+                debugger;
+                let mealDiv = document.querySelector(`.${day}-${meal_type}`)
+                selectedRecipeDiv.innerHTML = `<a href="${selectedRecipeObject.url}" target="_blank">${selectedRecipeObject.name}</a>`
+                mealDiv.append(selectedRecipeDiv);
             })
     })
 }

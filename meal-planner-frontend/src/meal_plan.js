@@ -60,7 +60,7 @@ function renderCalendar(mealPlan) {
         mealPlanContainer.appendChild(dayContainer);
 
         const breakfastBtn = document.createElement("div");
-        breakfastBtn.className = `${daysOfWeek[i]}-breakfast`;
+        breakfastBtn.className = `${daysOfWeek[i]}-Breakfast`;
         breakfastBtn.innerText = `Breakfast`;
 
         renderModal(breakfastBtn, dayContainer, mealPlan, daysOfWeek[i], "Breakfast");
