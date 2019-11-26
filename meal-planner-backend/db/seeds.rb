@@ -9,3 +9,6 @@
 buff_chickpea_wraps = Recipe.create(name: "Buffalo Chickpea Wraps", url: "https://minimalistbaker.com/spicy-buffalo-chickpea-wraps/", meal_type: "Entree", cuisine: "American")
 blueberry_pancakes = Recipe.create(name: "Blueberry Muffin Pancakes", url: "https://minimalistbaker.com/vegan-blueberry-muffin-pancakes/", meal_type: "Breakfast", cuisine: "American")
 falafel_wraps = Recipe.create(name: "Kale Falafel Hummus Wraps", url: "https://minimalistbaker.com/kale-falafel-hummus-wraps/", meal_type: "Entree", cuisine: "Mediterranean")
+
+mp1 = MealPlan.create(name: "Marathon Training", notes: "List of ingredients")
+
