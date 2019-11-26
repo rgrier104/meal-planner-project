@@ -10,14 +10,22 @@ class Meal {
 function renderMealForm(modalContent) {
     const mealForm = document.createElement("form");
     const mealFormSelect = document.createElement("select");
-    modalContent.appendChild(mealForm);
-    mealForm.appendChild(mealFormSelect);
+    const saveMeal = document.createElement("input");
+    saveMeal.setAttribute("type", "submit");
+    saveMeal.setAttribute("value", "Save Meal");
 
     allRecipes.forEach(recipe => {
         let optn = document.createElement("option");
         optn.text = recipe.name;
         optn.value = recipe.id;
-
         mealFormSelect.appendChild(optn);
+    })
+
+    modalContent.appendChild(mealForm);
+    mealForm.appendChild(mealFormSelect);
+    mealForm.appendChild(saveMeal);
+
+    mealForm.addEventListener("submit", () => {
+        //create new meal
     })
 }
