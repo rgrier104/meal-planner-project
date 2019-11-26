@@ -1,5 +1,6 @@
 const MEALPLANS_URL = "http://127.0.0.1:3000/meal_plans";
 const mealPlanContainer = document.getElementById("meal-plan-week");
+let newMealPlan;
 
 class MealPlan {
     constructor(name, notes, id) {
@@ -16,9 +17,26 @@ function displayMealPlan() {
     mealPlanForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        createMealPlan(e);
+        let formData = {
+            name: event.target.name.value,
+        };
 
-        renderCalendar();
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData)
+        };
+
+        fetch(MEALPLANS_URL, configObj)
+            .then(resp => resp.json())
+            .then(meal_plan => {
+                let newMealPlan = new MealPlan(meal_plan.name, meal_plan.notes, meal_plan.id)
+                console.log(newMealPlan)
+                renderCalendar(newMealPlan);
+            })
 
         addMealPlan = !addMealPlan
         if (addMealPlan) {
@@ -29,34 +47,12 @@ function displayMealPlan() {
     })
 }
 
-function createMealPlan(event) {
-    let formData = {
-        name: event.target.name.value,
-    };
 
-    let configObj = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify(formData)
-    };
-
-    return fetch(MEALPLANS_URL, configObj)
-        .then(resp => resp.json())
-        .then(meal_plan => {
-            let newMealPlan = new MealPlan(meal_plan.name, meal_plan.notes, meal_plan.id)
-            console.log(newMealPlan)
-        })
-}
-
-function renderCalendar() {
-    
+function renderCalendar(mealPlan) {
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     for (let i = 0; i < 7; i++) {
         const dayContainer = document.createElement("div");
-        dayContainer.className = "day-card"
+        dayContainer.className = `day-card`
         dayContainer.innerHTML = `
             <div>${daysOfWeek[i]}</div>
         `
@@ -67,13 +63,13 @@ function renderCalendar() {
         breakfastBtn.className = `${daysOfWeek[i]}-breakfast`;
         breakfastBtn.innerText = `Breakfast`;
 
-        renderModal(breakfastBtn, dayContainer);
+        renderModal(breakfastBtn, dayContainer, mealPlan, daysOfWeek[i], "Breakfast");
         
     }
 
 }
 
-function renderModal(btn, dayContainer) {
+function renderModal(btn, dayContainer, mealPlan, day, meal_type) {
     const modalDiv = document.createElement("div");
     modalDiv.className = `modal`;
 
@@ -85,7 +81,7 @@ function renderModal(btn, dayContainer) {
     closeBtn.innerHTML = `&times;`;
 
     const p = document.createElement("p");
-    p.innerText = `Select Breakfast`;
+    p.innerText = `Select ${meal_type}`;
 
     modalContent.appendChild(closeBtn);
     modalContent.appendChild(p);
@@ -97,7 +93,7 @@ function renderModal(btn, dayContainer) {
 
     btn.addEventListener("click", () => {
         modalDiv.style.display = "block";
-        renderMealForm(modalContent);
+        renderMealForm(modalContent, mealPlan, day, meal_type);
     });
 
     closeBtn.addEventListener("click", () => {
