@@ -1,4 +1,5 @@
-let MEALPLANS_URL = "http://127.0.0.1:3000/meal_plans";
+const MEALPLANS_URL = "http://127.0.0.1:3000/meal_plans";
+const mealPlanContainer = document.getElementById("meal-plan-week");
 
 class MealPlan {
     constructor(name, notes, id) {
@@ -49,8 +50,6 @@ function createMealPlan(event) {
             console.log(newMealPlan)
         })
 }
-
-const mealPlanContainer = document.getElementById("meal-plan-week");
 
 function renderCalendar() {
     
