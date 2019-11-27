@@ -6,6 +6,13 @@ class MealPlansController < ApplicationController
         render json: meal_plan
     end
 
+    def update
+        meal_plan = MealPlan.find_by_id(params[:id])
+        meal_plan.update(notes: params[:notes])
+
+        render json: meal_plan
+    end
+
     private
 
     def meal_plan_params
