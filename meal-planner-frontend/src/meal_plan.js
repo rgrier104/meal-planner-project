@@ -49,6 +49,11 @@ function displayMealPlan() {
 
 
 function renderCalendar(mealPlan) {
+    //remove create button
+
+    const createMPBtn = document.querySelector("#create-new-meal-plan");
+    createMPBtn.remove();
+
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     for (let i = 0; i < 7; i++) {
         const dayContainer = document.createElement("div");
