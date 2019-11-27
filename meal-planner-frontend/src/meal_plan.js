@@ -36,6 +36,8 @@ function displayMealPlan() {
                 let newMealPlan = new MealPlan(meal_plan.name, meal_plan.notes, meal_plan.id)
                 console.log(newMealPlan)
                 renderCalendar(newMealPlan);
+                let notesForm = document.getElementById("notes-form");
+                notesForm.setAttribute("data-meal-plan-id", `${newMealPlan.id}`);
             })
 
         addMealPlan = !addMealPlan
@@ -128,3 +130,29 @@ function renderModal(btn, dayContainer, mealPlan, day, meal_type) {
 
 }
 
+// Update Meal Plan with notes
+const saveMPBtn = document.getElementById("notes-form")
+saveMPBtn.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    let formData = {
+        notes: event.target.notes.value,
+        id: e.target.dataset.mealPlanId
+    };
+
+    let configObj = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+    };
+
+    fetch(`${MEALPLANS_URL}/${e.target.dataset.mealPlanId}`, configObj)
+        .then(resp => resp.json())
+        .then(meal_plan => {
+            console.log(meal_plan)
+        })
+
+})
