@@ -1,5 +1,5 @@
 const MEALPLANS_URL = "http://127.0.0.1:3000/meal_plans";
-const mealPlanContainer = document.getElementById("meal-plan-week");
+const mealPlanWeek = document.getElementById("meal-plan-week");
 let newMealPlan;
 
 class MealPlan {
@@ -13,7 +13,7 @@ class MealPlan {
 function displayMealPlan() {
     let addMealPlan = false;
     const mealPlanForm = document.getElementById("new-meal-plan");
-    const mealPlanContainer = document.getElementById("meal-plan-week");
+    const mealPlanContainer = document.getElementById("meal-plan-container");
     mealPlanForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -62,7 +62,7 @@ function renderCalendar(mealPlan) {
             <div class="calendar-day">${daysOfWeek[i]}</div>
         `
 
-        mealPlanContainer.appendChild(dayContainer);
+        mealPlanWeek.appendChild(dayContainer);
 
         const breakfastBtn = document.createElement("div");
         breakfastBtn.className = `meal-type-calendar`;

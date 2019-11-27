@@ -31,6 +31,10 @@ body {
     font-size: .75em;
 }
 
+#meal-plan-week {
+    margin: 10px;
+}
+
 .modal {
     display: none;
     position: fixed;
