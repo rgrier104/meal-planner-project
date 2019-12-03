@@ -50,18 +50,18 @@ class Recipe {
     }
 
     static displayNewRecipeForm() {
-        let addRecipe = false;
+        // let addRecipe = false;
         let newRecipeBtn = document.getElementById("new-recipe-button");
         let recipeForm = document.getElementById("new-recipe-container");
 
-        newRecipeBtn.addEventListener("click", () => {
-            addRecipe = !addRecipe
-            if (addRecipe) {
-                recipeForm.style.display = 'block'
-            } else {
-                recipeForm.style.display = 'none'
-            }
-        })
+        // newRecipeBtn.addEventListener("click", () => {
+        //     addRecipe = !addRecipe
+        //     if (addRecipe) {
+        //         recipeForm.style.display = 'block'
+        //     } else {
+        //         recipeForm.style.display = 'none'
+        //     }
+        // })
     
         recipeForm.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -108,7 +108,9 @@ allRecipesBtn.addEventListener("click", (e) => {
     showRecipe = !showRecipe
     if (showRecipe) {
         recipesContainer.style.display = 'block'
+        allRecipesBtn.innerText = `Hide Recipes`
     } else {
         recipesContainer.style.display = 'none'
+        allRecipesBtn.innerText = `View and/or Create Recipes`
     }
 })

@@ -10,10 +10,11 @@
 </head>
 <body>
     <div class="container">
-        <h1>Meal Planner</h1>
+        <h1>Whole Food Plant Based Meal Planner</h1>
+        <h3>Create a new meal plan to get started!</h3>
         <form id="new-meal-plan">
             Meal Plan Name: <input type="text" name="name">
-            <input type="submit" value="Create Meal Plan" id="create-new-meal-plan">
+            <input type="submit" value="Create Meal Plan" id="create-new-meal-plan" class="large-button">
         </form>
 
         <div id="meal-plan-container" style="display: none">
@@ -25,54 +26,67 @@
                 Notes:
                 <form id="notes-form">
                     <textarea name="notes" cols="70" rows="5" placeholder="Ingredients, meal prep instructions, etc."></textarea>
-                    <input type="submit" value="Save Meal Plan">
+                    <br>
+                    <input type="submit" value="Save Meal Plan" class="large-button">
                 </form>
             </div>
+
+            <br>
+
+            <button id="view-recipes" class="large-button">
+                View and/or Create New Recipes
+            </button>
+
         </div>
 
-        <button id="view-recipes">
-            <span>View Recipes</span>
-        </button>
-        <button id="view-meal-plans">View Meal Plans</button>
+        
 
         <div class="recipes-container">
-            <h3>All Recipes</h3>
-            <button id="new-recipe-button">Add New Recipe</button>
-            <br><br>
 
-            <div id="new-recipe-container" style="display: none">
+            
+            <!-- <button id="new-recipe-button">Add New Recipe</button> -->
+            <br>
+           
+            <div id="new-recipe-container" >
+                <h3>Create New Recipe</h3>
                 <form class="add-recipe-form">
-                    <input type="text" name="name" value="" placeholder="Enter Recipe Name" class="input-text">
+                    Recipe Name: <input type="text" name="name" value="" placeholder="Enter Recipe Name" class="input-text">
                     <br>
-                    <input type="text" name="url" value="" placeholder="Enter Recipe URL" class="input-text">
+                    Recipe URL: <input type="text" name="url" value="" placeholder="Enter Recipe URL" class="input-text">
                     <br>
                     <select name="meal_type">
+                        <option value="" disabled selected hidden>Select Meal Type</option>
                         <option value="Breakfast">Breakfast</option>
                         <option value="Entree">Entree</option>
+                        <option value="Snack">Snack</option>
                     </select>
                     <select name="cuisine">
+                        <option value="" disabled selected hidden>Select Cuisine</option>
                         <option value="American">American</option>
                         <option value="Mexican">Mexican</option>
                         <option value="Indian">Indian</option>
                         <option value="Asian">Asian</option>
+                        <option value="Mediterranean">Mediterranean</option>
                     </select>
-                    <br>
-                    <input type="submit" name="submit" value="Create New Recipe" class="submit">
+                    <br><br>
+                    <input type="submit" name="submit" value="Create New Recipe" class="large-button">
                 </form>
             </div>
+            <div>
+                <h3>All Recipes</h3>
+                <table >
+                    <thead>
+                        <tr>
+                            <th>Name & Link to Recipe</th>
+                            <th>Meal Type</th>
+                            <th>Cuisine</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-recipes">
 
-            <table >
-                <thead>
-                    <tr>
-                        <th>Name & Link to Recipe</th>
-                        <th>Meal Type</th>
-                        <th>Cuisine</th>
-                    </tr>
-                </thead>
-                <tbody id="all-recipes">
-
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

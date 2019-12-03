@@ -1,6 +1,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     background-image: url("fruit-salads-in-plate-1640774.jpg");
+    
 }
 
 .container {
@@ -68,12 +69,30 @@ body {
 }
 
 th, td {
-    /* border-bottom: 1px solid #ddd; */
+    border-bottom: 1px solid #ddd;
     text-align: left;
-    padding: 5px;
-    margin: 5px;
+    font-size: .75em;
+    /* padding: 5px;
+    margin: 5px; */
 }
 
 .recipes-container {
     display: none;
+
+}
+
+table {
+    display: grid;
+}
+
+.large-button {
+    color: white !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: rgba(12, 135, 114, 0.83);
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
 }
