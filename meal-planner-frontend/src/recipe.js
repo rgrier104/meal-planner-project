@@ -107,7 +107,7 @@ allRecipesBtn.addEventListener("click", (e) => {
     
     showRecipe = !showRecipe
     if (showRecipe) {
-        recipesContainer.style.display = 'inline-flex'
+        recipesContainer.style.display = 'block'
         allRecipesBtn.innerText = `Hide Recipes`
     } else {
         recipesContainer.style.display = 'none'
