@@ -117,10 +117,12 @@ function renderModal(btn, dayContainer, mealPlan, day, meal_type) {
     dayContainer.appendChild(btn);
 
     btn.addEventListener("click", () => {
-
-        if (!document.querySelector(`#${day}-${meal_type}-form`)) {
+        // debugger;
+        if (document.querySelector(`#${day}-${meal_type}`).innerText === `Add ${meal_type}`) {
             modalDiv.style.display = "block";
-            renderMealForm(modalContent, mealPlan, day, meal_type);
+            if (!document.querySelector(`#${day}-${meal_type}-form`)) {
+                renderMealForm(modalContent, mealPlan, day, meal_type);
+            }
         }
     });
 
