@@ -117,7 +117,7 @@ function renderModal(btn, dayContainer, mealPlan, day, meal_type) {
     dayContainer.appendChild(btn);
 
     btn.addEventListener("click", () => {
-        // debugger;
+
         if (document.querySelector(`#${day}-${meal_type}`).innerText === `Add ${meal_type}`) {
             modalDiv.style.display = "block";
             if (!document.querySelector(`#${day}-${meal_type}-form`)) {
