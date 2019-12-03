@@ -97,3 +97,18 @@ class Recipe {
     }
 
 }
+
+
+const allRecipesBtn = document.getElementById("view-recipes");
+const recipesContainer = document.querySelector(".recipes-container")
+let showRecipe = false;
+
+allRecipesBtn.addEventListener("click", (e) => {
+    
+    showRecipe = !showRecipe
+    if (showRecipe) {
+        recipesContainer.style.display = 'block'
+    } else {
+        recipesContainer.style.display = 'none'
+    }
+})

@@ -30,44 +30,50 @@
             </div>
         </div>
 
-        
-        <h3>All Recipes</h3>
-        <button id="new-recipe-button">Add New Recipe</button>
-        <br><br>
+        <button id="view-recipes">
+            <span>View Recipes</span>
+        </button>
+        <button id="view-meal-plans">View Meal Plans</button>
 
-        <div id="new-recipe-container" style="display: none">
-            <form class="add-recipe-form">
-                <input type="text" name="name" value="" placeholder="Enter Recipe Name" class="input-text">
-                <br>
-                <input type="text" name="url" value="" placeholder="Enter Recipe URL" class="input-text">
-                <br>
-                <select name="meal_type">
-                    <option value="Breakfast">Breakfast</option>
-                    <option value="Entree">Entree</option>
-                </select>
-                <select name="cuisine">
-                    <option value="American">American</option>
-                    <option value="Mexican">Mexican</option>
-                    <option value="Indian">Indian</option>
-                    <option value="Asian">Asian</option>
-                </select>
-                <br>
-                <input type="submit" name="submit" value="Create New Recipe" class="submit">
-            </form>
+        <div class="recipes-container">
+            <h3>All Recipes</h3>
+            <button id="new-recipe-button">Add New Recipe</button>
+            <br><br>
+
+            <div id="new-recipe-container" style="display: none">
+                <form class="add-recipe-form">
+                    <input type="text" name="name" value="" placeholder="Enter Recipe Name" class="input-text">
+                    <br>
+                    <input type="text" name="url" value="" placeholder="Enter Recipe URL" class="input-text">
+                    <br>
+                    <select name="meal_type">
+                        <option value="Breakfast">Breakfast</option>
+                        <option value="Entree">Entree</option>
+                    </select>
+                    <select name="cuisine">
+                        <option value="American">American</option>
+                        <option value="Mexican">Mexican</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Asian">Asian</option>
+                    </select>
+                    <br>
+                    <input type="submit" name="submit" value="Create New Recipe" class="submit">
+                </form>
+            </div>
+
+            <table >
+                <thead>
+                    <tr>
+                        <th>Name & Link to Recipe</th>
+                        <th>Meal Type</th>
+                        <th>Cuisine</th>
+                    </tr>
+                </thead>
+                <tbody id="all-recipes">
+
+                </tbody>
+            </table>
         </div>
-
-        <table >
-            <thead>
-                <tr>
-                    <th>Name & Link to Recipe</th>
-                    <th>Meal Type</th>
-                    <th>Cuisine</th>
-                </tr>
-            </thead>
-            <tbody id="all-recipes">
-
-            </tbody>
-        </table>
     </div>
 
     

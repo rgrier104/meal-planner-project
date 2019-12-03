@@ -73,3 +73,7 @@ th, td {
     padding: 5px;
     margin: 5px;
 }
+
+.recipes-container {
+    display: none;
+}
