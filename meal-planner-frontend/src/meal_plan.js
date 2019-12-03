@@ -69,22 +69,22 @@ function renderCalendar(mealPlan) {
         const breakfastBtn = document.createElement("div");
         breakfastBtn.className = `meal-type-calendar`;
         breakfastBtn.setAttribute("id", `${daysOfWeek[i]}-Breakfast`)
-        breakfastBtn.innerText = `Breakfast`;
+        breakfastBtn.innerText = `Add Breakfast`;
 
         const lunchBtn = document.createElement("div");
         lunchBtn.className = `meal-type-calendar`;
         lunchBtn.setAttribute("id", `${daysOfWeek[i]}-Lunch`)
-        lunchBtn.innerText = `Lunch`;
+        lunchBtn.innerText = `Add Lunch`;
 
         const dinnerBtn = document.createElement("div");
         dinnerBtn.className = `meal-type-calendar`;
         dinnerBtn.setAttribute("id", `${daysOfWeek[i]}-Dinner`)
-        dinnerBtn.innerText = `Dinner`;
+        dinnerBtn.innerText = `Add Dinner`;
 
         const snackBtn = document.createElement("div");
         snackBtn.className = `meal-type-calendar`;
         snackBtn.setAttribute("id", `${daysOfWeek[i]}-Snack`)
-        snackBtn.innerText = `Snack`;
+        snackBtn.innerText = `Add Snack`;
 
         renderModal(breakfastBtn, dayContainer, mealPlan, daysOfWeek[i], "Breakfast");
         renderModal(lunchBtn, dayContainer, mealPlan, daysOfWeek[i], "Lunch");

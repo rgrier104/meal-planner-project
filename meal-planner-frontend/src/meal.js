@@ -60,6 +60,8 @@ function renderMealForm(modalContent, mealPlan, day, meal_type) {
 
                 let mealDiv = document.querySelector(`#${day}-${meal_type}`)
                 selectedRecipeDiv.innerHTML = `<a href="${selectedRecipeObject.url}" target="_blank">${selectedRecipeObject.name}</a>`
+                mealDiv.innerText = `${meal_type}`
+                mealDiv.className = `meal-type-calendar-no-hover`
                 mealDiv.append(selectedRecipeDiv);
             })
     })
