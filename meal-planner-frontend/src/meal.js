@@ -18,7 +18,16 @@ function renderMealForm(modalContent, mealPlan, day, meal_type) {
     saveMeal.setAttribute("type", "submit");
     saveMeal.setAttribute("value", "Save Meal");
 
-    allRecipes.forEach(recipe => {
+    let filteredRecipes = allRecipes.filter(recipe => {
+        if (meal_type === "Breakfast") {
+            return recipe.meal_type === "Breakfast";
+        } else if (meal_type === "Snack") {
+            return recipe.meal_type === "Snack";
+        } else {
+            return recipe.meal_type === "Entree";
+        }
+    })
+    filteredRecipes.forEach(recipe => {
         let optn = document.createElement("option");
         optn.text = recipe.name;
         optn.value = recipe.id;
