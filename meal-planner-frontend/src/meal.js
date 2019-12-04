@@ -66,7 +66,7 @@ function renderMealForm(formDiv, mealPlan, day, meal_type) {
             .then(meal => {
                 let newMeal = new Meal(meal.meal_plan_id, meal.recipe_id, meal.day, meal.meal_type)
                 console.log(newMeal)
-                formDiv.parentNode.style.display = "none";
+                formDiv.parentNode.parentNode.style.display = "none";
 
                 let selectedRecipeObject = allRecipes.find(recipe => recipe.id === meal.recipe_id)
                 let selectedRecipeDiv = document.createElement("div")

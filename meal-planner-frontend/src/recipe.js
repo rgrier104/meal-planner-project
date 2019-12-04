@@ -82,7 +82,7 @@ function addNewRecipe() {
         return fetch(RECIPES_URL, configObj)
             .then(resp => resp.json())
             .then(recipe => {
-                let newRecipe = new Recipe(recipe.name, recipe.url, recipe.meal_type, recipe.cuisine)
+                let newRecipe = new Recipe(recipe.name, recipe.url, recipe.meal_type, recipe.cuisine, recipe.id)
                 allRecipes.push(newRecipe)
                 newRecipe.renderRecipe()
             })
