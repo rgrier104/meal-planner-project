@@ -9,6 +9,7 @@ class Meal {
     }
 }
 
+// Render drop down with all recipes for that meal
 function renderMealForm(modalContent, mealPlan, day, meal_type) {
     const mealForm = document.createElement("form");
     mealForm.setAttribute("id", `${day}-${meal_type}-form`) 
@@ -18,6 +19,7 @@ function renderMealForm(modalContent, mealPlan, day, meal_type) {
     saveMeal.setAttribute("type", "submit");
     saveMeal.setAttribute("value", "Save Meal");
 
+    // Filter recipes to only show relevant recipes in drop down
     let filteredRecipes = allRecipes.filter(recipe => {
         if (meal_type === "Breakfast") {
             return recipe.meal_type === "Breakfast";
@@ -27,6 +29,7 @@ function renderMealForm(modalContent, mealPlan, day, meal_type) {
             return recipe.meal_type === "Entree";
         }
     })
+    // Add select options
     filteredRecipes.forEach(recipe => {
         let optn = document.createElement("option");
         optn.text = recipe.name;
@@ -38,6 +41,7 @@ function renderMealForm(modalContent, mealPlan, day, meal_type) {
     mealForm.appendChild(mealFormSelect);
     mealForm.appendChild(saveMeal);
 
+    // Create new meal associated with the meal plan and recipe
     mealForm.addEventListener("submit", (event) => {
         event.preventDefault();
         

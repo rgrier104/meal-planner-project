@@ -10,10 +10,12 @@ class MealPlan {
     }
 }
 
+// Create new meal plan and render calendar
 function displayMealPlan() {
     let addMealPlan = false;
     const mealPlanForm = document.getElementById("new-meal-plan");
     const mealPlanContainer = document.getElementById("meal-plan-container");
+    // Create new meal plan in datbase
     mealPlanForm.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -49,9 +51,8 @@ function displayMealPlan() {
     })
 }
 
-
+// Create continer for each meal
 function renderCalendar(mealPlan) {
-    //remove create button
 
     const createMPBtn = document.querySelector("#create-new-meal-plan");
     createMPBtn.remove();
@@ -94,6 +95,7 @@ function renderCalendar(mealPlan) {
     }
 }
 
+// Render pop up modal to allow user to select recipe
 function renderModal(btn, dayContainer, mealPlan, day, meal_type) {
     const modalDiv = document.createElement("div");
     modalDiv.className = `modal`;
@@ -116,6 +118,7 @@ function renderModal(btn, dayContainer, mealPlan, day, meal_type) {
     dayContainer.appendChild(modalDiv);
     dayContainer.appendChild(btn);
 
+    // Update DOM to show selected recipe
     btn.addEventListener("click", () => {
 
         if (document.querySelector(`#${day}-${meal_type}`).innerText === `Add ${meal_type}`) {
@@ -132,7 +135,7 @@ function renderModal(btn, dayContainer, mealPlan, day, meal_type) {
 
 }
 
-// Update Meal Plan with notes
+// Update Meal Plan in database with notes
 const saveMPBtn = document.getElementById("notes-form")
 saveMPBtn.addEventListener("submit", (e) => {
     e.preventDefault();

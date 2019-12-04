@@ -11,7 +11,6 @@ body {
     margin-right: auto;
     margin-top: 7%;
     padding: 10px;
-
 }
 
 .day-card {
@@ -25,12 +24,12 @@ body {
 
 
 .meal-type-calendar, .meal-type-calendar-no-hover {
-    /* font-size: .75em; */
     padding: 2px;
 }
 
 .meal-type-calendar:hover{
     color: rgba(12, 135, 114, 0.83);
+    cursor: pointer;
 }
 
 #meal-plan-week {
@@ -67,9 +66,6 @@ body {
 th, td {
     border-bottom: 1px solid #ddd;
     text-align: left;
-    /* font-size: .75em; */
-    /* padding: 5px;
-    margin: 5px; */
 }
 
 .recipes-container {
@@ -82,9 +78,6 @@ th, td {
 div#new-recipe-container, #all-recipes-container {
     margin: 10px;
     padding: 10px;
-    /* border-style: solid;
-    border-color: gray;
-    border-width: 1px; */
     background-color: rgba(12, 135, 114, 0.37);
     text-align: top;
 }
@@ -94,10 +87,6 @@ input[type=text] {
     margin: 5px;
     padding: 5px;
 }
-
-/* table {
-    display: grid;
-} */
 
 .large-button {
     color: white !important;

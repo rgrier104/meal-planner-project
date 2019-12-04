@@ -11,16 +11,7 @@ class Recipe {
         this.id = id;
     }
 
-    static fetchRecipes() {
-        fetch(RECIPES_URL)
-            .then(resp => resp.json())
-            .then(json => json.forEach(recipe => {
-                let newRecipe = new Recipe(recipe.name, recipe.url, recipe.meal_type, recipe.cuisine, recipe.id);
-                allRecipes.push(newRecipe);
-                newRecipe.renderRecipe();
-            }))
-    }
-
+    // Display all recipes in table on DOM
     renderRecipe() {
         const allRecipesTable = document.getElementById("all-recipes");
         const tableRow = document.createElement('tr');
@@ -48,56 +39,57 @@ class Recipe {
         })
 
     }
-
-    static displayNewRecipeForm() {
-        // let addRecipe = false;
-        let newRecipeBtn = document.getElementById("new-recipe-button");
-        let recipeForm = document.getElementById("new-recipe-container");
-
-        // newRecipeBtn.addEventListener("click", () => {
-        //     addRecipe = !addRecipe
-        //     if (addRecipe) {
-        //         recipeForm.style.display = 'block'
-        //     } else {
-        //         recipeForm.style.display = 'none'
-        //     }
-        // })
-    
-        recipeForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            let recipeName = event.target.name.value;
-            let recipeUrl = event.target.url.value;
-            let recipeType = event.target.meal_type.value;
-            let recipeCuisine = event.target.cuisine.value;
-
-            let formData = {
-                name: recipeName,
-                url: recipeUrl,
-                meal_type: recipeType,
-                cuisine: recipeCuisine
-            };
-
-            let configObj = {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-                body: JSON.stringify(formData)
-            };
-
-            return fetch(RECIPES_URL, configObj)
-                .then(resp => resp.json())
-                .then(recipe => {
-                    let newRecipe = new Recipe(recipe.name, recipe.url, recipe.meal_type, recipe.cuisine)
-                    newRecipe.renderRecipe()
-                })
-
-        })
-    }
-
 }
 
+// Get all recipes from database
+function fetchRecipes() {
+        fetch(RECIPES_URL)
+            .then(resp => resp.json())
+            .then(json => json.forEach(recipe => {
+                let newRecipe = new Recipe(recipe.name, recipe.url, recipe.meal_type, recipe.cuisine, recipe.id);
+                allRecipes.push(newRecipe);
+                newRecipe.renderRecipe();
+            }))
+    }
+
+// Post request to server to add recipe to database and display on DOM
+function addNewRecipe() {
+    let recipeForm = document.getElementById("new-recipe-container");
+
+    recipeForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        let recipeName = event.target.name.value;
+        let recipeUrl = event.target.url.value;
+        let recipeType = event.target.meal_type.value;
+        let recipeCuisine = event.target.cuisine.value;
+
+        let formData = {
+            name: recipeName,
+            url: recipeUrl,
+            meal_type: recipeType,
+            cuisine: recipeCuisine
+        };
+
+        let configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(formData)
+        };
+
+        return fetch(RECIPES_URL, configObj)
+            .then(resp => resp.json())
+            .then(recipe => {
+                let newRecipe = new Recipe(recipe.name, recipe.url, recipe.meal_type, recipe.cuisine)
+                newRecipe.renderRecipe()
+            })
+
+    })
+}
+
+// Display all recipes table and new recipe form
 
 const allRecipesBtn = document.getElementById("view-recipes");
 const recipesContainer = document.querySelector(".recipes-container")
@@ -111,6 +103,6 @@ allRecipesBtn.addEventListener("click", (e) => {
         allRecipesBtn.innerText = `Hide Recipes`
     } else {
         recipesContainer.style.display = 'none'
-        allRecipesBtn.innerText = `View and/or Create Recipes`
+        allRecipesBtn.innerText = `View & Create Recipes`
     }
 })

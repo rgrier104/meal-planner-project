@@ -2,9 +2,9 @@
 
 document.addEventListener("DOMContentLoaded", () => {
     // Display all recipes
-    Recipe.fetchRecipes();
+    fetchRecipes();
     // Display new recipe form
-    Recipe.displayNewRecipeForm();
+    addNewRecipe();
     displayMealPlan();
 
 })
