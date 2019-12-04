@@ -35,6 +35,7 @@ class Recipe {
                 })
                 .then(function (json) {
                     e.target.parentNode.parentNode.remove()
+                    allRecipes.splice(allRecipes.findIndex(recipe => recipe.id === `${e.target.dataset.recipeId}`), 1)
                 })
         })
 
