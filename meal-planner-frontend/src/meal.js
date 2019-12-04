@@ -10,7 +10,7 @@ class Meal {
 }
 
 // Render drop down with all recipes for that meal
-function renderMealForm(modalContent, mealPlan, day, meal_type) {
+function renderMealForm(formDiv, mealPlan, day, meal_type) {
     const mealForm = document.createElement("form");
     mealForm.setAttribute("id", `${day}-${meal_type}-form`) 
     const mealFormSelect = document.createElement("select");
@@ -37,7 +37,7 @@ function renderMealForm(modalContent, mealPlan, day, meal_type) {
         mealFormSelect.appendChild(optn);
     })
 
-    modalContent.appendChild(mealForm);
+    formDiv.appendChild(mealForm);
     mealForm.appendChild(mealFormSelect);
     mealForm.appendChild(saveMeal);
 
@@ -66,7 +66,7 @@ function renderMealForm(modalContent, mealPlan, day, meal_type) {
             .then(meal => {
                 let newMeal = new Meal(meal.meal_plan_id, meal.recipe_id, meal.day, meal.meal_type)
                 console.log(newMeal)
-                modalContent.parentNode.style.display = "none";
+                formDiv.parentNode.style.display = "none";
 
                 let selectedRecipeObject = allRecipes.find(recipe => recipe.id === meal.recipe_id)
                 let selectedRecipeDiv = document.createElement("div")

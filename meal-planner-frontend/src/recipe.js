@@ -83,6 +83,7 @@ function addNewRecipe() {
             .then(resp => resp.json())
             .then(recipe => {
                 let newRecipe = new Recipe(recipe.name, recipe.url, recipe.meal_type, recipe.cuisine)
+                allRecipes.push(newRecipe)
                 newRecipe.renderRecipe()
             })
 

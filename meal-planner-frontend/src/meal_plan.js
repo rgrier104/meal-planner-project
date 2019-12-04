@@ -110,8 +110,11 @@ function renderModal(btn, dayContainer, mealPlan, day, meal_type) {
     const p = document.createElement("p");
     p.innerText = `Select ${meal_type}`;
 
+    const formDiv = document.createElement("div");
+
     modalContent.appendChild(closeBtn);
     modalContent.appendChild(p);
+    modalContent.appendChild(formDiv)
     modalDiv.appendChild(modalContent);
     btn.appendChild(modalDiv);
 
@@ -123,9 +126,9 @@ function renderModal(btn, dayContainer, mealPlan, day, meal_type) {
 
         if (document.querySelector(`#${day}-${meal_type}`).innerText === `Add ${meal_type}`) {
             modalDiv.style.display = "block";
-            if (!document.querySelector(`#${day}-${meal_type}-form`)) {
-                renderMealForm(modalContent, mealPlan, day, meal_type);
-            }
+            // Clear modal content in case there are new recipes to display
+           formDiv.innerHTML = ""
+            renderMealForm(formDiv, mealPlan, day, meal_type);
         }
     });
 
