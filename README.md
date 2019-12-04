@@ -8,7 +8,8 @@ Fork and clone this repository on your local machine. Enter the meal-planner-bac
 ```$bundle install 
 $rails db:create 
 $rails db:migrate
-$rails s```
+$rails s 
+```
 
 Open the index.html file in the meal-planner-frontend folder in your browser to start meal planning!
 
