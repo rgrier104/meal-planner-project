@@ -105,3 +105,7 @@ h3, h1 {
     padding-bottom: 5px;
     margin: 5px;
 }
+
+a {
+    color: rgba(7, 77, 65, 0.83);
+}
